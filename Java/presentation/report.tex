@@ -1,0 +1,283 @@
+\documentclass{article}
+\usepackage[a4paper,bindingoffset=0.2in,left=1in,right=1in,top=1in,bottom=1in,footskip=.25in]{geometry}
+\title{LaTeX report of Seat-Allocation}
+\author{Aman, Anmol, Pranjal}
+\begin{document}
+\maketitle
+\begin{center}
+\line(1,0){400}
+\end{center}
+\begin{center}
+\section*{Table of Contents}
+\end{center}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\begin{enumerate}
+  \item About the Problem
+  	\begin{itemize}
+	  \item GaleShapley Algorithm
+	  \item MeritOrder Algorithm
+	\end{itemize}
+  \item Experience with the Course
+  \item Conclusion
+\end{enumerate}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\subsection*{Why a Project ?}
+\hspace*{5 mm}Software Systems lab is a course which is meant to explore all sorts of softwares \\
+\hspace*{5 mm}The idea is to cover a wide range of softwares which will surely help us to command respect over  \\
+\hspace*{5 mm}non - CS majors \\
+\hspace*{5 mm}But that is a secondary reason \\
+\hspace*{5 mm}The primary reason is to experience computer science - to experience learning - to experience \\
+\hspace*{5 mm}exploring! \\
+\hspace*{5 mm}The project is meant to teach us "team - work" and collaboration \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\subsection*{What's there in it ?}
+\hspace*{5 mm}This project aims at making a Program for seat-allocation in IIT-JEE using java. \\
+\hspace*{5 mm}We intend to create a Program which when provided with preferences of candidates, \\
+\hspace*{5 mm}ranklist and qouta for each course, gives back the branch he received \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}The idea is to use the two algorithms provided by sir.\\
+\hspace*{5 mm}It will contain several arraylist and hashmap for fast access of data to make the program effecient. \\
+\hspace*{5 mm}Proper data structure and data hiding(private data with public functions to access) is used \\
+\hspace*{5 mm}as part of object oriented implementation programing. \\
+\pagebreak
+\begin{center}
+\section*{About the Problem}
+\end{center}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}The goal of this lab assignment is to implement two algorithms for college admissions. \\
+\hspace*{5 mm}Each algorithm takes into account the preferences of students and the merit lists of the colleges \\
+\hspace*{5 mm}in order to best allocate seats. \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}There are many candidates who desire admission and many programmes to be alloted. \\
+\hspace*{5 mm}(A programme is a particular stream in a particular institute, e.g., CSE in IITB, EE in NIT Nagpur etc.) \\
+\hspace*{5 mm}A programme has a quota for each category. For example, CSE in IITB may accept 40 students in General Category; \\
+\hspace*{5 mm}15 in OBC, 5 in SC, 5 in ST etc. \\
+\hspace*{5 mm}The goal is to allot seats to students. It is desirable for a student to get the highest preference \\
+\hspace*{5 mm}possible; while being fair to the other students based on the merit list. That is, \\
+\begin{enumerate}
+  \item Fairness: Suppose candidate x is allotted program p. Then for any other candidate y such that y has a better (smaller) rank than candidate x in the merit list of p, the allocation of y should be p or some other program that y prefers to p.
+  \item  Optimality: For any candidate x, there does not exist any other allocation that satisfies the Fairness property, and provides x with an allocation she prefers to μ(x). 
+\end{enumerate}
+\pagebreak
+\begin{center}
+\section*{Gale-Shapley Algorithm}
+\end{center}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Initially DS allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item Firstlty all the candidates present in the DS Category apply for their first preference.
+  \item Now we go through all the institutes maintaining a common rejectionlist and take the top two or more(depends on same rank) according to their GE rank and add to waitlist.
+  \item Those who were not waitlisted are added to the rejection list.
+  \item Now we go through the rejection list and for all the candidates present we call the nextDSVirtualProgramme() which increases the pointer to the next program in preference list.(Pointer points to the program to be applied)
+  \item Now we check if the rejectionlist is empty or not. If it is not empty we repeat the process and everyone applies to their current program(to which the pointer points) except if they have exhausted their preference list, then those candidates dont apply.
+  \item If the rejection list is empty, we get out of the loop and those who were not waitlisted now act as their category(e.g. GE, SC, ST-PD, etc) and all their pointers are reset.
+\end{itemize}
+\pagebreak
+\hspace*{5 mm}{\LARGE Now normal allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item Firstlty all the candidates except selected DS Category and F category apply for their first preference.
+  \item Now we go through all the VirtualProgramme(for each program we go through all the 8 category VirtualProgramme) maintaining a common rejectionlist and take the top quota no. of candidates or more(depends on same rank) according to their rank in the meritlist of the VirtualProgramme they applied in rank and to waitlist.
+  \item Those who were not waitlisted are added to the rejection list.
+  \item Now we go through the rejection list and for all the candidates present we call the nextVirtualProgramme() which increases the pointer to the next program in preference list.(Pointer points to the program to be applied)
+  \item Now we check if the rejectionlist is empty or not. If it is not empty we repeat the process and everyone applies to their current program(to which the pointer points) except if they have exhausted their preference list, then those candidates dont apply.
+  \item If the rejection list is empty, we get out of the loop.
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Now F allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item Firstlty all the candidates present in the F Category apply for their first preference.
+  \item Now we go through all the VirtualProgramme(for each program we go through all the 8 category VirtualProgramme) maintaining a common rejectionlist.
+  \item If there is an empty seat then the candidate gets it or else we compare the rank of the last candidate with our candidate and if he is better or equal he gets a seat(resulting in extension of quota) else he is added to rejectionlist. 
+  \item Now we go through the rejection list and for all the candidates present we call the nextFVirtualProgramme() which increases the pointer to the next program in preference list.(Pointer points to the program to be applied)
+  \item Now we check if the rejectionlist is empty or not. If it is not empty we repeat the process and everyone applies to their current program(to which the pointer points) except if they have exhausted their preference list, then those candidates dont apply.
+  \item If the rejection list is empty, we get out of the loop and get the desired result.
+\end{itemize}
+\pagebreak
+\begin{center}
+\section*{Merit-Order Algorithm}
+\end{center}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Initially DS allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item We go through DS ranklist(based on GE rank only) and take candidates one by one. 
+  \item The candidate keeps on applying in his preference list untill he gets selected or he exhausts his list.
+  \item For each program we check the institute seats left, if there is a seat he gets it (or there is same rank so quota extension can take place) and we call the next candidate else he tries the next program in his list (and checks that programs intitute seats).
+  \item Once we go through the whole list DS allocation is complete and we reset the pointer of all those who were not selected.
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Now Phase-I allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item We go through commonRankList and take candidates one by one.(only those who are not already waitListed and not any F Candidates) 
+  \item The candidate keeps on applying in his preference list untill he gets selected or he exhausts his list.
+  \item For each program if there is a seat he gets it (or there is same rank so quota extension can take place) and we call the next candidate else he tries the next program in his list.
+  \item Once we go through the whole list Phase-I is complete.
+\end{itemize}
+\pagebreak
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Now de-reservation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item We go through all the programs and if there is any OBC, GE-PD or OBC-PD seats they are alloted to GE. If any SC-PD/ST-PD seats are left they are alloted to SC/ST.
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Now Phase-II allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item First we reset the pointer of non-selected candidates.
+  \item It is similar to Phase-I i.e. we go through commonRankList and take candidates one by one.(only those who are not already waitListed and not any F Candidates) 
+  \item We follow rest steps of Phase-I
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Now F allocation takes place:}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item We go through F rankList and take candidates one by one. 
+  \item The candidate keeps on applying in his preference list untill he gets selected or he exhausts his list.
+  \item For each program if there is a seat he gets it or if there is a candidate with worse or equal rank to him then he gets the seat.
+  \item Once we go through the whole list our algo is complete and we get the desired result.
+\end{itemize}
+\pagebreak
+
+
+\begin{center}
+\section*{JEE Choice filling Web Application}
+\end{center}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE DJANGO - A Completely new Experience!}
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item We designed a JEE choice filling Web application which lets a student fill his/her choices for JEE counselling
+  \item We used Python for the coding part - python in Django framework
+  \item In this project report, we have tried to elaborate our project work
+  \item We have also mentioned the references that helped us during the course of the project work
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Features of the web application : }
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} The web application is meant to provide the following functionality to the user : \\
+\begin{itemize}
+  \item A user can log into his/her account in the web application
+  \item A user can fill his/her choices in the web application - the application takes care of the fact that a particular choice is filled only once
+  \item A user can edit his/her existing choices
+  \item A user can delete his/her existing choices
+  \item A user can check the last year's opening as well as closing ranks for a particular programme
+  \item A user can also select an institute and category, and the web application will help the user to decide which branches he/she is likely to get
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Platforms used in this project : }
+\hspace*{5 mm} \\
+\begin{itemize}
+  \item We used the Django framework
+  \item We did all the coding part in python
+  \item The web app itself is in HTML
+  \item We also employed CSS
+  \pagebreak
+\end{itemize}
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm}{\LARGE Things learnt in this project : }
+\hspace*{5 mm} \\
+\hspace*{5 mm} \\
+\hspace*{5 mm} During the course of this project, we learnt a lot. We learnt the following : \\
+\begin{itemize}
+  \item How to learn and understand a completely new software - django, only and only with the help of online tutorials
+  \item How to work as a team in the development of a not so trivial project
+  \item How to use internet efficiently to search for errors, syntaxes and common bug fixes
+  \item How to manage time
+\end{itemize}
+\pagebreak
+\section{Experience with the Project}
+\subsection*{Project Credits : }
+\hspace*{5 mm}The following people were involved in the development of this project : \\
+\\
+\hspace*{10 mm}1.) Anmol Arora (Roll number 130050027) \\
+\hspace*{10 mm}2.) Pranjal Khare (Roll number 130050028) \\
+\hspace*{10 mm}3.) Aman Goel (Roll number 130050041) \\
+\subsection*{Project Time Line : }
+\hspace*{5 mm}The problem statement of the project was released by the start of October 2014 \\
+\hspace*{5 mm}We started to work on it soon after it was released \\
+\hspace*{5 mm}The work was at it's peak during the Diwali Holidays (October 17th to October 26th) \\
+\hspace*{5 mm}We successfully completed the prohject well before time \\
+\subsection*{Experience with the project : }
+\hspace*{5 mm}Our schedule is usually very hectic and additionally we got a project work \\
+\hspace*{5 mm}So we were indeed tensed \\
+\hspace*{5 mm}But the team contains very efficient planners who know how to manage things well \\
+\hspace*{5 mm}So we used to plan and sit together for our project work \\
+\hspace*{5 mm}Regular planning and skilled management ensured a steady progress in the project \\
+\hspace*{5 mm}We did face a number of difficulties \\
+\hspace*{5 mm}For example, taking care of all the corner cases in java was really confusing \\
+\hspace*{5 mm}Also we were new to java so we used to used Google a lot for any sort of help \\
+\hspace*{5 mm}Django was a new platform to work with. So we were bound to get stuck \\
+\hspace*{5 mm}But, in the end, we did get solutions to our problems \\
+\pagebreak
+\section*{Conclusion : }
+\hspace*{5 mm}We did enjoy a lot, and learning Java and Django was a great experience in itself \\
+\hspace*{5 mm}We had chosen to drop the idea of Box2D and the 3 of us decided to rather do the \\
+\hspace*{5 mm}(Lab 10 + Lab 11) Pro Version project \\
+\hspace*{5 mm}We realised that Learning Python and Java would be of much more utility \\
+\hspace*{5 mm}It will be better to learn 2 highly popular programming languages \\
+\hspace*{5 mm}than just learning Box2D \\
+\hspace*{5 mm}Also, both of these languages are currently widely in use \\
+\hspace*{5 mm}So we decided that it was a better idea to learn python and java \\
+\hspace*{5 mm}Another important reason was the beauty of the problem statement of Lab 10 and 11 \\
+\hspace*{5 mm}The problem statement wanted us to create a real time working web application \\
+\hspace*{5 mm}which was indeed fascinating \\
+\hspace*{5 mm}We had just learnt the Gale - Shapley algorithm in our Discrete Structures \\
+\hspace*{5 mm}course and a project which required an implementation of a recently learnt \\
+\hspace*{5 mm}algorithm sounded pretty cool to us \\
+\hspace*{5 mm}Java is a highly user friendly language to work with \\
+\hspace*{5 mm}It is fast, and is also highly efficient with a number of standard libraries that ease our task \\
+\hspace*{5 mm}Similarly, python is very easy to work with  \\
+\hspace*{5 mm}Django framework is a bit difficult to understand but once understood well,  \\
+\hspace*{5 mm}It can be used to make a wide variety of powerful web applications \\
+\hspace*{5 mm}All in all, we learnt a lot and we look forward to many other such projects in future \\
+
+
+
+\end{document}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Last Year Data{% endblock %}
+
+{% block heading %}
+<h2>Last Years's Data</h2>
+{% endblock %}
+
+{% block content %}
+{% url "chutzpah_lastyear" as action_url  %}
+<form action="{{ action_url }}" method="post" accept-charset="utf-8">
+    {{ form|crispy }}
+    {% csrf_token %}
+</form>
+{% endblock %}

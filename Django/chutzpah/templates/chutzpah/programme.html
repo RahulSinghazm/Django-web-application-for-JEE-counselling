@@ -1,0 +1,12 @@
+{% if programme.owner == user %}
+<a class="lead" href="{{ programme.url }}">{{ programme.name }}</a>
+<br>
+<br>by <a href="{% url "chutzpah_programme_user" programme.owner.username %}">
+    {{ programme.owner.username }}</a>
+{{ programme.date_created|timesince }} ago
+
+    <br><a class="btn btn-default btn-xs"
+        href="{% url "chutzpah_programme_edit" programme.pk %}">Edit programme</a>
+    <br><a class="btn btn-default btn-xs"
+        href="{% url "chutzpah_programme_delete" programme.pk %}">Delete programme</a>
+{% endif %}

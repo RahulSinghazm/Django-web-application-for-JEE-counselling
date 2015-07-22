@@ -1,0 +1,71 @@
+
+\section{Body}
+
+\subsection{Part 1: Gale-Shapley Algorithm}
+
+\begin{frame}
+	\frametitle{Part 1a: Gale-Shapley Algorithm}
+	In this algo all the candidates apply simultaneously. \cite{java_tutorial} \pause \\
+	On second iteration, those waitlisted apply again to the same program and those rejected apply to the next. \pause \\
+	This keeps happening untill all are either waitlisted or out of choices. \pause \\
+	Those waitlisted are selected for that course and others don't get a seat. \pause \\
+	This algorithm manipulates the preference list of candidates and the merit list in such a way that it automatically takes care of de-reservation. \pause \\
+	Each choice is split according to candidates category in the preference list. \pause \\
+	Also each program gets its own modified meritlist based on programs category. \pause \\
+	Due to these changes we take care of de-reservation in one go of algorithm. 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Part 1b: Gale-Shapley Algorithm}
+	In order to accomodate DS students they are given institute seats before the start of algorithm. \pause \\
+	Those who are leftout now apply according to their category in the main algorithm. \pause \\ 
+	For foreign candidates, we take care of them right at the end. \pause \\
+	Their preference list is also manipulated to take care of de-reserved seat. \pause \\
+	After all this, we get an optimal and fair allocation. \pause
+\end{frame}
+
+\subsection{Part 2: Merit-Order Algorithm}
+
+\begin{frame}
+	\frametitle{Part 2a: Merit-Order Algorithm}
+	In this algo we make a common meritlist in which GE, OBC, SC, ST, GE-PD, OBC-PD, SC-PD and ST-PD meritlists all present in increasing order \\
+	are appended in the same order. \pause \\
+	We go through the list and each candidate(except foreign) gets a chance to apply in its preference list untill he gets an empty seat or his list is exhausted. \pause \\
+	Once a candidate gets a seat it is fixed for him and he cannot be replaced. \pause \\
+	If a candidate appears multiple times in the CML then he gets multiple chances to go through his preferences unless he already got selected. \pause \\
+	After one go of the algorithm we take care of de-reservation i.e vacant seats are added to GE, SC and ST according to rule. \pause \\
+	After this we go through the list again as earlier. \pause
+\end{frame}
+
+\begin{frame}
+	\frametitle{Part 2ab: Merit-Order Algorithm}
+	In order to take care of DS category we go through the DS list and apply the same algo for institute seats in place of programs. \pause \\
+	After this round all those who were not selected will apply again along with others but this time according to their category. \pause \\
+	For foreign candidates, they apply at the end. \pause \\
+	We go through their list in the same way as others and there is no need to worry about de-reservation as it has already taken place earlier.\pause \\
+	After all this we get an allocation which may not be fair for some cases. \pause
+\end{frame}
+
+
+\subsection{Part 3: Choice Filling Web Application}
+\begin{frame}
+	\frametitle{Part 3: Choice Filling Web Application}
+	\begin{itemize}
+		\item We designed a JEE choice filling Web application which lets a student fill his/her choices for JEE counselling \pause \\
+		\item We used Python for the coding part - python in Django framework \cite{django_tutorial_1} \pause \\
+		\item In this project report, we have tried to elaborate our project work \pause \\
+		\item We have also mentioned the references that helped us during the course of the project work \cite{django_tutorial_2} \pause \\
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	 The web application is meant to provide the following functionality to the user : \pause \\
+	\begin{itemize}
+	  \item A user can log into his/her account in the web application \pause \\
+	  \item A user can fill his/her choices in the web application - the application takes care of the fact that a particular choice is filled only once \pause \\
+	  \item A user can edit his/her existing choices \pause \\
+	  \item A user can delete his/her existing choices \pause \\
+	  \item A user can check the last year's opening as well as closing ranks for a particular programme \pause \\
+	  \item A user can also select an institute and category, and the web application will help the user to decide which branches he/she is likely to get \pause \\
+	\end{itemize}
+\end{frame}

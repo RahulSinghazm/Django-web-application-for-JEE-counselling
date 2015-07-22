@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Preference Order{% endblock %}
+
+{% block heading %}
+<h2>Your Preference Order </h2>
+{% endblock %}
+
+{% block content %}
+<ul class="list-unstyled">
+{% for programme in programmes %}
+{% if programme.owner == user %}
+    <li class="well">{% include "chutzpah/programme.html" %}</li>
+    {% endif %}
+{% empty %}
+    <li>No programmes added till now.</li>
+{% endfor %}
+</ul>
+{% if user.is_authenticated %}
+<p><a class="btn btn-default" href="{% url "chutzpah_programme_create" %}">
+    Create new programme</a></p>
+{% endif %}
+{% endblock %}

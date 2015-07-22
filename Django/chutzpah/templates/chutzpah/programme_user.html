@@ -1,0 +1,9 @@
+{% extends "chutzpah/programme_list.html" %}
+
+{% block title %}{{ owner.username }}'s programmes{% endblock %}
+
+{% block heading %}
+<h2>{{ owner.username }}'s Programmes<br>
+    <small>{{ programmes.count }} Programmes in total</small>
+</h2>
+{% endblock %}

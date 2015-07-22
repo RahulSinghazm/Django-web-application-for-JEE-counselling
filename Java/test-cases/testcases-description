@@ -1,0 +1,63 @@
+test-case 1:	Only 1 program with only GE seats which are more than the candidates that apply.
+				The candidates are of various categories but with non-zero GE Rank.
+result:			All candidates get a seat.
+
+test-case 2:	2 programs with only GE seats which are in total more than the candidates that apply.
+				The candidates are of various categories but with non-zero GE Rank.
+result:			1 candidate do not get a seat due to not applying in both the courses.(G111100829)
+
+test-case 3:	2 programs with only GE seats which are in total less than the candidates that apply.
+				The candidates are of various categories but with non-zero GE Rank.
+result:			1 candidate do not get a seat due to less seat.(G111100690)
+
+test-case 4:	Only 1 program with Multiple categories and separate quotas for each.
+				The candidates are of various categories.
+result:			Students get seats for their own category.
+
+test-case 5:	Only 1 program with Multiple categories and separate quotas for each.
+				The candidates are of various categories.
+result:			OBC/SC/ST student gets a GE seat.(G111100469 / G111100459 / G111100778 & G111100829)
+
+test-case 6:	Only 1 program with Multiple categories and separate quotas for each.
+				The candidates are of various categories.
+result:			MeritOrder: There is a seat de-reservation of 1 GE-PD & 1 OBC-PD seat along with 1 ST-PD seat.
+				(G111100829 ST) gets GE-PD, (G111100105 GE) gets OBC-PD and ST-PD remains vacant.
+				GaleShapley: There is a seat de-reservation of 1 GE-PD & 1 OBC-PD & 1 OBC seat along with 1 ST-PD seat.
+				(G111100469 OBC-PD) gets GE-PD, (G111100105 GE) gets OBC-PD, (G111100829 ST) gets OBC and ST-PD remains vacant.
+
+test-case 7:	Only 1 program with Multiple categories and separate quotas for each.
+				The candidates are of various categories.
+result:			There is a seat de-reservation of 1 ST-PD seat.
+				(G111100829 ST) gets that ST-PD seat.
+
+test-case 8:	Same as test-case 6 but with a foreign candidate (G111101131) added.
+				The GE rank of this candidate is same as (G111100105).
+result:			The same as test-case 6 but after de-reservation GE qouta is increased to 4 and 5 respectively and rank of last candidate (G111100105)
+				is same as foreign candidate so he is selected.
+
+test-case 9:	Same as test-case 8 but the rank of foreign candidate (G111101131) is worse than candidate (G111100105).
+result:			The foreign candidate is not selected.
+
+test-case 10:	4 programs , 2 from IIT-D and IIT-B each with Multiple categories and separate quotas for each.
+				There are 4 DS candidate.
+return:			2 DS candidates (G111100501, G111100502) gets program in IIT-B and other 2 (G111100500, G111100503) in IIT-D under DS category.
+
+test-case 11:	4 programs , 2 from IIT-D and IIT-B each with Multiple categories and separate quotas for each.
+				There are 4 DS candidate.
+return:			2 DS candidates (G111100501, G111100502) gets program in IIT-B and 1 (G111100503) in IIT-D under DS category.
+				(G111100500) gets a GE seat after de-reservation from OBC.
+
+test-case a:	Only 1 program with Multiple categories and separate quotas for each.
+				The candidates are of various categories.
+result:			MeritOrder: There is a seat de-reservation of 1 OBC-PD seat.
+				(G111100829 ST) gets that OBC-PD seat.
+				GaleShapley: There is a seat de-reservation of 1 ST-PD seat.
+				(G111100829 ST) gets that ST-PD seat.
+
+test-case b:	4 programs , 2 from IIT-D and IIT-B each with Multiple categories and separate quotas for each.
+				There are 4 DS candidate with the middle two having same rank.
+return:			3 DS candidates (G111100500, G111100501, G111100502) gets program in IIT-B (The last having same rank) and 1 (G111100503) 
+				in IIT-D under DS category.
+
+test-case c:	Provided by sir
+return:			Matches expected result

@@ -1,0 +1,108 @@
+***********************************We are using 2 Latedays**************************************
+*********************************************************************************************************************************************************
+Honour Code : 
+I pledge on my honour that I have not
+given or received any unauthorized assistance on this assignment or
+any previous task.
+Anmol Arora(130050027)
+
+I pledge on my honour that I have not
+given or received any unauthorized assistance on this assignment or
+any previous task.
+Pranjal Khare(130050028)
+
+I pledge on my honour that I have not
+given or received any unauthorized assistance on this assignment or
+any previous task.
+Aman Goel(130050041)
+-----------------------------------------------------------------------------------------------------
+Percentage Contributions : 
+Anmol Arora : 100%
+Pranjal Khare : 100%
+Aman Goel : 100%
+-----------------------------------------------------------------------------------------------------
+Git repositories (these were originally made on github.com):
+https://bitbucket.org/mewtomat/combined-seat-allocation
+
+These repositories were created during the course of project:
+https://bitbucket.org/mewtomat/combined-seat-allocation
+https://bitbucket.org/mewtomat/python-part
+https://bitbucket.org/mewtomat/seat-allocation
+https://bitbucket.org/mewtomat/seat-allocation2
+
+username : mewtomat
+password : Password007
+-----------------------------------------------------------------------------------------------
+Code : present in git repository
+Test Cases : present in git repository
+Code documentation using doxygen : Submitted
+Latex report : Submitted
+Beamer Presentation : Submitted
+------------------------------------------------------------------------------------------------------
+******************************Lab 10 Instructions********************************************
+Instructions for the execution of Gale - Shapley Algorithm and Merit - order algorithm
+Run the makefile given
+for compiling :
+> make
+for executing :
+> make exec
+for generating documentation (javadoc) :
+> make doc
+for generating latex documentation :
+> make latex
+for generating pdf documentation :
+> make beamer
+for cleaning only the classes:
+>make clean
+for complete cleaning:
+>make distclean
+------------------------------------------------------------------------------------------------------
+******************************Lab 11 Instructions***********************************************
+*******Part 1********
+For lab 11 part 1, CSV Generation, goto the csvGeneration directory and run ./CSVGenerator.sh (after doing chmod +x CSVGenerator.sh)
+*******Part 2********
+Instructions for the execution of the Django Web Application : 
+1.) Ensure that Django is installed in the system (Django 1.7), also ensure that bootstrap and crispy forms are installed
+2.) Download the Django folder
+3.) cd to the directory containing the manage.py file
+4.) run the following commands in order :
+		python3 manage.py makemigrations
+		python3 manage.py migrate
+		python3 manage.py syncdb
+		python3 manage.py runserver
+5.) create a super user using the following command :
+	python3 manage.py createsuperuser
+6.) now open the browser and type : 
+	127.0.0.1:8000
+7.) open the admin page : 127.0.0.1:8000/admin 
+8.) create users (students) on this page
+9.) now the registered users can login
+10.) on the top right side there is a button which shows other """navigation options""" -- IMPORTANT
+11.) These options provide other functions
+************************************************************
+references:
+http://stackoverflow.com/questions/1883980/find-the-nth-occurrence-of-substring-in-a-string
+http://stackoverflow.com/questions/9151104/how-to-iterate-through-a-list-of-lists-in-python
+http://stackoverflow.com/questions/13872049/print-empty-line
+http://stackoverflow.com/questions/2988017/string-comparison-in-python-is-vs
+http://stackoverflow.com/questions/4843158/check-if-a-python-list-item-contains-a-string-inside-another-string
+http://stackoverflow.com/questions/6340351/python-iterating-through-list-of-list
+
+http://stackoverflow.com/questions/9891814/how-to-use-regex-with-optional-characters-in-python
+http://stackoverflow.com/questions/16052862/python-function-to-replace-tabs-with-spaces-in-a-string
+http://www.tutorialspoint.com/python/string_find.htm
+
+http://stackoverflow.com/questions/663171/is-there-a-way-to-substring-a-string-in-python
+http://stackoverflow.com/questions/5074331/match-first-instance-of-python-regex-search
+http://stackoverflow.com/questions/15491894/regex-to-validate-date-format-dd-mm-yyyy
+https://docs.python.org/3/howto/regex.html
+https://docs.python.org/2/tutorial/controlflow.html
+http://stackoverflow.com/questions/18132912/checking-if-a-value-is-equal-to-any-value-in-an-array
+https://www.google.co.in/search?q=how+to+check+if+a+word+is+one+of+the+possible+values+in+python&oq=how+to+check+if+a+word+is+one+of+the+possible+values+in+python&aqs=chrome..69i57.18189j0j7&client=ubuntu-browser&sourceid=chrome&es_sm=0&ie=UTF-8
+http://stackoverflow.com/questions/9171157/how-to-read-data-table-column-by-column-from-a-txt-in-pythonhttp://penandpants.com/2012/03/09/reading-text-tables-with-python/
+http://stackoverflow.com/questions/7745260/iterate-through-words-of-a-file-in-python
+http://www.dreamincode.net/forums/topic/19504-reading-text-file-word-by-word-in-python/
+https://www.ibm.com/developerworks/library/l-python5/
+http://www.thegeekstuff.com/2014/08/parse-text-file-using-python/
+
+

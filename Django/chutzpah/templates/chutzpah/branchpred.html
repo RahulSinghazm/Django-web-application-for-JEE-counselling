@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Branch prediction{% endblock %}
+
+{% block heading %}
+<h2>Branch Predictor</h2>
+{% endblock %}
+
+{% block content %}
+{% url "chutzpah_branchpred" as action_url  %}
+<form action="{{ action_url }}" method="post" accept-charset="utf-8">
+    {{ form|crispy }}
+    {% csrf_token %}
+     <input class="btn btn-default" type="submit" value="Check" >
+     <br>
+     {%if result %}
+		Branch Predictions:
+			{% for item in result %}
+				<p>{{ item }}</p>
+			{% endfor %}
+     {% endif %}
+     <br>
+</form>
+{% endblock %}
